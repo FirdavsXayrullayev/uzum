@@ -17,4 +17,5 @@ public class UsersDto {
     private String email;
     private String gender;
     private Date birtDate;
+    private Short isActive;
 }

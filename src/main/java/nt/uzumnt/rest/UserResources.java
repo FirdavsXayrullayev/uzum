@@ -1,10 +1,8 @@
 package nt.uzumnt.rest;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import nt.uzumnt.dto.ResponseDto;
 import nt.uzumnt.dto.UsersDto;
 import nt.uzumnt.service.UsersService;
@@ -19,5 +17,17 @@ public class UserResources {
     @PostMapping
     public ResponseDto<UsersDto> add(@RequestBody UsersDto dto){
         return usersService.add(dto);
+    }
+    @PatchMapping()
+    public ResponseDto<UsersDto> updateUser(@RequestBody UsersDto dto){
+        return usersService.updateUser(dto);
+    }
+    @GetMapping("phone-number")
+    public ResponseDto<UsersDto> findByPhoneNumber(@RequestParam String phoneNumber){
+        return usersService.findPhoneNumber(phoneNumber);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseDto<UsersDto> deleteById(@PathVariable Integer id){
+        return usersService.deleteById(id);
     }
 }

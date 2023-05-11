@@ -1,8 +1,6 @@
 package nt.uzumnt.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +17,8 @@ import java.util.Date;
 public class Users {
 
     @Id
+    @GeneratedValue(generator = "userIdSequence")
+    @SequenceGenerator(name = "userIdSequence", sequenceName = "userIdSequence", allocationSize = 1)
     private Integer id;
     private String phoneNumber;
     private String firstName;
@@ -27,4 +27,5 @@ public class Users {
     private String email;
     private String gender;
     private Date birtDate;
+    private Short isActive;
 }
